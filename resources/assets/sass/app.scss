@@ -6,9 +6,5 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-//sidebar
-@import "sidebar";
-//custom css
-@import "custom";
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");

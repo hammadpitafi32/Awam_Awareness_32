@@ -33,3 +33,6 @@ Route::resource('admin/permissions', 'Admin\PermissionsController');
 Route::resource('admin/users', 'Admin\UsersController');
 Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
 Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
+Route::resource('admin/posts', 'Admin\\postsController');
+Route::resource('admin/posts', 'Admin\\PostsController');
+Route::resource('admin/posts', 'Admin\\PostsController');

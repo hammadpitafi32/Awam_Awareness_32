@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePostsTable extends Migration
 {
@@ -15,14 +14,15 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->string('path');
-            $table->string('type');
-            $table->string('status');
-            $table->string('user_id');
             $table->timestamps();
-        });
+            $table->softDeletes();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->string('path')->nullable();
+            $table->string('user')->nullable();
+            $table->string('status')->nullable();
+            $table->string('type')->nullable();
+            });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::drop('posts');
     }
 }
