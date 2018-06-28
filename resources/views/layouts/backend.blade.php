@@ -19,7 +19,8 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                  <!--   {{ config('app.name', 'Laravel') }} -->
+                  AA Portal
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,15 +45,13 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ url('/logout') }}">
                                         Logout
                                     </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                   <!--  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         @csrf
-                                    </form>
+                                    </form> -->
                                 </div>
                             </li>
                         @endguest
@@ -77,7 +76,7 @@
         <hr/>
 
         <div class="container">
-            &copy; {{ date('Y') }}. Created by <a href="http://www.appzcoder.com">AppzCoder</a>
+            &copy; {{ date('Y') }}. Created by <a href="#">Hammad</a>
             <br/>
         </div>
 
