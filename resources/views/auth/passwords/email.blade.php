@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="card card-default">
-                <div class="card-title">Reset Password</div>
+            <div class="card">
+                <div class="card-header">Reset Password</div>
 
                 <div class="card-block">
                     @if (session('status'))
