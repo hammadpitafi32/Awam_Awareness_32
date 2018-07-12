@@ -6,14 +6,19 @@
         <div class="col-md-8">
             <div class="card panel-shadow">
                 <div class="card-header">
-                    <div class="input-group col-md-4">
+                    <div class="input-group col-md-6">
                         <input class="form-control py-2" type="search" value="search" id="example-search-input">
                         <span class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button">
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
+                        
                     </div>
+                    <div class="btn btn-info pull-right">
+                            <input type="file" value="Upload" name="file"/>
+                    </div>
+                    
                 </div>
                 <div class="card-body">
                     <div class="embed-responsive embed-responsive-16by9">
@@ -31,38 +36,55 @@
                     </div>
                 </div>
                 <div class="card-body row">
+                    <div style="display: none;" id="comment_error"></div>
                     <div class="col-lg-10 col-10">
-                        <input type="text" class="form-control" placeholder="write comments ...">
+                        <input type="text" name="comment" id='comment' class="form-control" placeholder="write comments ...">
+                        <input type="hidden" id="post_id" name="post" value="137857207">
                     </div>
                     <div class="col-2">
-                        <span class="send-icon"><a href="http://nicesnippets.com/" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></span>
+                        <span class="send-icon"><a href=".#" onclick="sendComment()"><i class="fa fa-paper-plane"></i></a></span>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="#"><b>Ryan Haywood</b></a>
-                            made a post.
+            <div id="new_Comments">
+                
+                @foreach($getComments as $comment)
+                <div class="panel panel-white post panel-shadow">
+                    <div class="post-heading">
+                        <div class="pull-left image">
+                            <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
                         </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
-                    </div>
-                </div> 
-                <div class="post-description"> 
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
+                        <div class="pull-left meta">
+                            <div class="title h5">
+                                <a href="#"><b>{{ $comment['user']['name'] }}</b></a>
+                                made a Comment.
+                            </div>
+                            <h6 class="text-muted time">{{ $comment['created_at'] }}</h6>
+                        </div>
+                    </div> 
+                    <div class="post-description"> 
+                        <p>{{ $comment['comment'] }}</p>
+                        <div class="stats">
+                            <a data-commentId='{{$comment["id"]}}' onclick="likes(this)"  class="btn btn-default stat-item">
+                                <?php if(count((array)$comment['current_userlikes'])>0){ ?>
+                               
+                                <i style="color: blue;"  class="fa fa-thumbs-up icon"></i>{{count($comment['likes'])}}
+                                <?php }else{?>
+                               
+                                <i  class="fa fa-thumbs-up icon"></i>{{count($comment['likes'])}}
+                                <?php }?>
+                            </a>
+                            <a data-commentId='{{$comment["id"]}}' onclick="Dislikes(this)"   class="btn btn-default stat-item">
+                                @if(count((array)$comment['current_user_dislikes']) > 0)
+                                    <i style="color: blue;"  class="fa fa-thumbs-down icon"></i>{{count($comment['dislikes'])}}
+                                @else
+                                    <i class="fa fa-thumbs-down icon"></i>{{count($comment['dislikes'])}}
+                                @endif
+                            </a>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
 
@@ -101,6 +123,7 @@
 </div>
 
 </div>
+
 @endsection
 
 

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','VidozController@welcome');
 
 Auth::routes();
 
@@ -36,3 +34,11 @@ Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\P
 Route::resource('admin/posts', 'Admin\\postsController');
 Route::resource('admin/posts', 'Admin\\PostsController');
 Route::resource('admin/posts', 'Admin\\PostsController');
+Route::resource('admin/comments', 'App\Http\Controllers\Admin\\CommentsController');
+Route::resource('admin/comments', 'Admin\\CommentsController');
+Route::resource('admin/comments', 'Admin\\CommentsController');
+Route::get('user/comment/save', 'Admin\CommentsController@storeComment');
+Route::get('user/comment/likes', 'Admin\CommentsController@storeLike');
+Route::get('user/comment/dislikes', 'Admin\CommentsController@storeDisLike');
+Route::resource('admin/likes', 'Admin\\LikesController');
+Route::resource('admin/dislikes', 'Admin\\DislikesController');

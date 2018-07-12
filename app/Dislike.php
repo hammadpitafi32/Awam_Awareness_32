@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Dislike extends Model
 {
     use SoftDeletes;
     /**
@@ -13,7 +13,7 @@ class Post extends Model
      *
      * @var string
      */
-    protected $table = 'posts';
+    protected $table = 'dislikes';
 
     /**
     * The database primary key value.
@@ -27,15 +27,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'path', 'type', 'status', 'user'];
+    protected $fillable = ['comment_id', 'user_id'];
 
-    public function user()
-    {
-        return $this->BelongsTo('App\User','user','id');
-    }
-    public function comments()
-    {
-        return $this->hasMany('App\Comments');
-    }
     
 }
